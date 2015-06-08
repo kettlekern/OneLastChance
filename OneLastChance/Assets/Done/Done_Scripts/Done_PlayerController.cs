@@ -23,21 +23,24 @@ public class Done_PlayerController : MonoBehaviour
 	
 	void Update ()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire) 
-		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			GetComponent<AudioSource>().Play ();
-		}
+//		if (Input.GetButton("Fire1") && Time.time > nextFire) 
+//		{
+//			nextFire = Time.time + fireRate;
+//			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+//			GetComponent<AudioSource>().Play ();
+//		}
 	}
 
 	void FixedUpdate ()
 	{
 
-		float rotateThrust = Input.GetAxis ("Horizontal") * rotationForce * Time.deltaTime;
+		float rotateThrust = Input.GetAxis ("Horizontal") * 20;
 		float forwardThrust = Input.GetAxis ("Vertical") * thrustForce * Time.deltaTime;
 		if (forwardThrust > 0) {
 			GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * forwardThrust, ForceMode.VelocityChange);
+		}
+		if (rotateThrust != 0) {
+			this.transform.eulerAngles = new Vector3 (0.0f, rotateThrust, 0.0f);
 		}
 		GetComponent<Rigidbody> ().AddRelativeTorque (Vector3.up * rotateThrust, ForceMode.Impulse);
 //		GetComponent<Rigidbody>().position = new Vector3
