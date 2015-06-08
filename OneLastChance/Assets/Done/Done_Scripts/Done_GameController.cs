@@ -31,5 +31,5 @@ public class Done_GameController : MonoBehaviour
 
 	public void win(){
 		GameOver (friendlyName);
-	}
+   }
 }
