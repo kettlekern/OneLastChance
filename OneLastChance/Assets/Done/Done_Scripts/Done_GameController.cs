@@ -8,6 +8,7 @@ public class Done_GameController : MonoBehaviour
 	public string friendlyName;
 	
 	private bool gameOver;
+	private bool gameWin;
 	
 	void Start ()
 	{
@@ -17,7 +18,7 @@ public class Done_GameController : MonoBehaviour
 	
 	private void GameOver (string winner)
 	{
-		gameOverText.text = "The " + winner + " have won...";
+		gameOverText.text = "The " + winner;
 		gameOver = true;
 	}
 
@@ -26,10 +27,16 @@ public class Done_GameController : MonoBehaviour
 	}
 
 	public void lose(){
-		GameOver (enemyName);
+		GameOver (enemyName + " have won...");
+		gameWin = false;
 	}
 
 	public void win(){
-		GameOver (friendlyName);
+		GameOver (friendlyName + " has won!");
+		gameWin = true;
    }
+
+	public bool isWin(){
+		return gameWin;
+	}
 }

@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
 			controller.lose();
 			DestroyObject(other.gameObject);
 			DestroyObject(gameObject);
+			Camera.main.GetComponent<AudioListener>().enabled = true;
 		}
 	}
 }

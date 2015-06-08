@@ -21,6 +21,7 @@ public class aim : MonoBehaviour {
 	void Start () {
 		controller = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController>();
 		timeSinceShot = 0;
+		lookTarget = randomLocation();
 	}
 	
 	// Update is called once per frame
