@@ -13,6 +13,8 @@ public class aim : MonoBehaviour {
 	private float timeSinceLooked;
 	public float lookDelay;
 	private Quaternion lookTarget; 
+	public GameObject targetGO;
+	public float velocityGuess;
 
 	// Use this for initialization
 	void Start () {
@@ -33,9 +35,9 @@ public class aim : MonoBehaviour {
 			}
 		} else {
 			timeSinceLooked += Time.deltaTime;
-			if (timeSinceLooked > lookDelay){
+			if (timeSinceLooked > lookDelay * 2){
 				lookTarget = randomLocation();
-				timeSinceLooked = 0;
+				timeSinceLooked = Random.value;
 			}
 			head.rotation = Quaternion.Lerp (head.rotation, lookTarget, Time.deltaTime * rotationSpeed);
 		}
@@ -44,18 +46,23 @@ public class aim : MonoBehaviour {
 	public Quaternion randomLocation()
 	{
 		Quaternion rotation = Random.rotation;
-		return new Quaternion(head.rotation.x, rotation.y, head.rotation.z, rotation.w);
+		return new Quaternion(head.rotation.x, rotation.y, head.rotation.z, head.rotation.w);
 	}
 
 	public Quaternion playerLocation()
 	{
-		return new Quaternion(head.rotation.x, Mathf.Atan((target.position.z-head.position.z) / (target.position.x-head.position.x)), head.rotation.z, head.rotation.w);
+		Vector3 vectorToTarget = (target.position + targetGO.GetComponent<Rigidbody>().velocity * velocityGuess) - transform.position;
+		//Vector3 vectorToTarget = target.position - transform.position;
+		float angle = Mathf.Atan2(vectorToTarget.x, vectorToTarget.z) * Mathf.Rad2Deg;
+		return Quaternion.AngleAxis(angle, Vector3.up);
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Player") {
 			target = other.gameObject.transform;
+			targetGO = other.gameObject;
+			timeSinceShot = delay/2;
 		}
 	}
 
@@ -63,6 +70,7 @@ public class aim : MonoBehaviour {
 	{
 		if (other.gameObject.transform == target) {
 			target = null;
+			targetGO = null;
 		}
 	}
 }
