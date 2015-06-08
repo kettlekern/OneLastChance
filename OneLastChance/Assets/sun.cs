@@ -11,6 +11,7 @@ public class sun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController>();
+		GameObject.Find("Death Camera").GetComponent<Camera>().enabled = false;
 		timer = 0;
 	}
 	
@@ -34,6 +35,7 @@ public class sun : MonoBehaviour {
 			}
 			controller.win();
 			DestroyObject(other.gameObject);
+			GameObject.Find("Death Camera").GetComponent<Camera>().enabled = true;
 			Camera.main.GetComponent<AudioListener>().enabled = true;
 		}
 	}
