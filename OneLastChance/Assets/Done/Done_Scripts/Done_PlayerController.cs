@@ -39,7 +39,7 @@ public class Done_PlayerController : MonoBehaviour
 		if (forwardThrust > 0) {
 			GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * forwardThrust, ForceMode.VelocityChange);
 		}
-		GetComponent<Rigidbody> ().AddRelativeTorque (Vector3.up * rotateThrust, ForceMode.VelocityChange);
+		GetComponent<Rigidbody> ().AddRelativeTorque (Vector3.up * rotateThrust, ForceMode.Impulse);
 //		GetComponent<Rigidbody>().position = new Vector3
 //		(
 //			Mathf.Clamp (GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax), 

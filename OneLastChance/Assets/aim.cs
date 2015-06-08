@@ -15,16 +15,19 @@ public class aim : MonoBehaviour {
 	private Quaternion lookTarget; 
 	public GameObject targetGO;
 	public float velocityGuess;
+	private Done_GameController controller;
 
 	// Use this for initialization
 	void Start () {
+		controller = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController>();
 		timeSinceShot = 0;
+		lookTarget = randomLocation();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (target != null) {
+		if (target != null && !controller.isGameOver()) {
 			//Vector3 targetPoint = new Vector3(target.position);
 			head.rotation = Quaternion.Lerp (head.rotation, playerLocation (), Time.deltaTime * rotationSpeed);
 			timeSinceShot += Time.deltaTime;
