@@ -10,6 +10,7 @@ public class Done_Boundary
 public class Done_PlayerController : MonoBehaviour
 {
 	public float thrustForce;
+	public float maxVelocity;
 	public float rotationForce;
 	public float tilt;
 	public Done_Boundary boundary;
