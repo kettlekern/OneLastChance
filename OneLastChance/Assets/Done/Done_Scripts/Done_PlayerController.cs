@@ -12,6 +12,8 @@ public class Done_PlayerController : MonoBehaviour
 	public float thrustForce;
 	public float maxVelocity;
 	public float rotateSpeed;
+	public float backwardsThrustProportion;
+	public bool onlyRotation;
 	
 	void Update ()
 	{
@@ -38,8 +40,13 @@ public class Done_PlayerController : MonoBehaviour
 			rigidBody.AddForce(-brakeVelocity);
 		}
 
-		rigidBody.AddRelativeForce (Vector3.forward * verticalDir * thrustForce, ForceMode.Impulse);
-		rigidBody.AddRelativeForce (Vector3.right * horizontalDir * thrustForce, ForceMode.Impulse);
-
+		if (verticalDir < 0) {
+			rigidBody.AddRelativeForce (Vector3.forward * verticalDir * thrustForce * backwardsThrustProportion, ForceMode.Impulse);
+		} else {
+			rigidBody.AddRelativeForce (Vector3.forward * verticalDir * thrustForce, ForceMode.Impulse);
+		}
+		if (!onlyRotation) {
+			rigidBody.AddRelativeForce (Vector3.right * horizontalDir * thrustForce, ForceMode.Impulse);
+		}
 	}
 }

@@ -12,7 +12,8 @@ public class Done_JetController : MonoBehaviour {
 	private ParticleSystem rightJet;
 	private Done_PlayerController playerController;
 	private Rigidbody playerRigidBody;
-	private float scaleFactor;
+	private float xScaleFactor;
+	private float zScaleFactor;
 	// Use this for initialization
 	void Start () {
 		leftJet = GameObject.Find ("leftJet").GetComponent<ParticleSystem>();
@@ -24,8 +25,11 @@ public class Done_JetController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		scaleFactor = (playerRigidBody.velocity.magnitude / playerController.maxVelocity);
-		coreJet.startSize = jetMinStartSize + ((jetMaxStartSize - jetMinStartSize) * scaleFactor);
-		coreJet.startSpeed = jetMinStartSpeed + ((jetMaxStartSpeed - jetMinStartSpeed) * scaleFactor);
+		zScaleFactor = (playerRigidBody.velocity.z / playerController.maxVelocity);
+		xScaleFactor = -(playerRigidBody.velocity.x / playerController.maxVelocity);
+		coreJet.startSize = jetMinStartSize + ((jetMaxStartSize - jetMinStartSize) * zScaleFactor);
+		coreJet.startSpeed = jetMinStartSpeed + ((jetMaxStartSpeed - jetMinStartSpeed) * zScaleFactor);
+		rightJet.startSize = jetMinStartSize + ((jetMaxStartSize - jetMinStartSize) * xScaleFactor);
+		rightJet.startSpeed = jetMinStartSpeed + ((jetMaxStartSpeed - jetMinStartSpeed) * xScaleFactor);
 	}
 }
