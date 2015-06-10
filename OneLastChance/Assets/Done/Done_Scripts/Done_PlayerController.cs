@@ -11,15 +11,7 @@ public class Done_PlayerController : MonoBehaviour
 {
 	public float thrustForce;
 	public float maxVelocity;
-	public float rotationForce;
-	public float tilt;
-	public Done_Boundary boundary;
-
-	public GameObject shot;
-	public Transform shotSpawn;
-	public float fireRate;
-	 
-	private float nextFire;
+	public float rotateSpeed;
 	
 	void Update ()
 	{
@@ -27,23 +19,27 @@ public class Done_PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		float horizontalDir = Input.GetAxis ("Horizontal");
+		float verticalDir = Input.GetAxis ("Vertical");
+		float rotateDir = Input.GetAxis ("Rotate");
 
-		float rotateThrust = Input.GetAxis ("Horizontal") * 20;
-		float forwardThrust = Input.GetAxis ("Vertical") * thrustForce * Time.deltaTime;
-		if (forwardThrust > 0) {
-			GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * forwardThrust, ForceMode.VelocityChange);
+		this.gameObject.transform.Rotate (Vector3.up * rotateSpeed * rotateDir);
+
+		Rigidbody rigidBody = GetComponent<Rigidbody> ();
+		float sqrSpeed = rigidBody.velocity.sqrMagnitude;
+		float sqrMaxVelocity = maxVelocity * maxVelocity;
+
+		// braking
+		if(sqrSpeed > sqrMaxVelocity) {
+			float brakeSpeed = sqrSpeed - sqrMaxVelocity;
+			Vector3 normalizedVelocity = rigidBody.velocity.normalized;
+			Vector3 brakeVelocity = normalizedVelocity * brakeSpeed;
+
+			rigidBody.AddForce(-brakeVelocity);
 		}
-		if (rotateThrust != 0) {
-			this.transform.eulerAngles = new Vector3 (0.0f, rotateThrust, 0.0f);
-		}
-		GetComponent<Rigidbody> ().AddRelativeTorque (Vector3.up * rotateThrust, ForceMode.Impulse);
-//		GetComponent<Rigidbody>().position = new Vector3
-//		(
-//			Mathf.Clamp (GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax), 
-//			0.0f, 
-//			Mathf.Clamp (GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax)
-//		);
-		
-		//GetComponent<Rigidbody>().rotation = Quaternion.Euler (0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
+
+		rigidBody.AddRelativeForce (Vector3.forward * verticalDir * thrustForce, ForceMode.Impulse);
+		rigidBody.AddRelativeForce (Vector3.right * horizontalDir * thrustForce, ForceMode.Impulse);
+
 	}
 }
