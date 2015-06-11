@@ -1,7 +1,7 @@
-- Add arrow HUD
+- Add arrow HUD ✓
 - Random Spawn Location
 - Better explosions
-- Random planet textures
+- Random planet textures ✓
 - Better sun texture
-- Ship lateral motion and rotation
-- fix/add the ship animations
+- Ship lateral motion and rotation ✓
+- fix/add the ship animations ✓

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11588816950924645a7e3a35631f8e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 20
   deathCamera: {fileID: 2049160, guid: 31a12e314dab3044fabc4d9413c2ff1d, type: 2}
 --- !u!136 &13692426
 CapsuleCollider:
