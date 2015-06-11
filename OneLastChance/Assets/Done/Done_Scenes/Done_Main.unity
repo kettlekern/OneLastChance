@@ -5128,12 +5128,12 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 650181470}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: .941176534, g: .843137324, b: .0470588282, a: 1}
   m_Intensity: 8
-  m_Range: 17
+  m_Range: 30
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -12900,7 +12900,7 @@ MonoBehaviour:
   thrustForce: 2
   maxVelocity: 12
   rotateSpeed: 5
-  backwardsThrustProportion: 0
+  backwardsThrustProportion: .100000001
   onlyRotation: 0
 --- !u!64 &2105173451
 MeshCollider:
