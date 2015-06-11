@@ -16,12 +16,14 @@ public class aim : MonoBehaviour {
 	public GameObject targetGO;
 	public float velocityGuess;
 	private Done_GameController controller;
+	public Material[] materials;
 
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController>();
 		timeSinceShot = 0;
 		lookTarget = randomLocation();
+		GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
 	}
 	
 	// Update is called once per frame

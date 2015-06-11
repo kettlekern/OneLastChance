@@ -12,7 +12,7 @@ InputManager:
     negativeButton: left
     positiveButton: right
     altNegativeButton: a
-    altPositiveButton: e
+    altPositiveButton: d
     gravity: 3
     dead: .00100000005
     sensitivity: 3
@@ -27,8 +27,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: down
     positiveButton: up
-    altNegativeButton: o
-    altPositiveButton: ','
+    altNegativeButton: s
+    altPositiveButton: w
     gravity: 3
     dead: .00100000005
     sensitivity: 3
@@ -297,10 +297,10 @@ InputManager:
     m_Name: Rotate
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: ''''
-    positiveButton: .
+    negativeButton: q
+    positiveButton: e
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 1
     gravity: 3
     dead: .00100000005
     sensitivity: 3
