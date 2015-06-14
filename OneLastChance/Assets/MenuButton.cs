@@ -16,7 +16,8 @@ public class MenuButton : MonoBehaviour {
 		
 		public void ChangeToScene(){
 			Application.LoadLevel(newGameScene);
-			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+			Done_PlayerController player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Done_PlayerController>();
+			player.health = 3;
 		}
 	}
 

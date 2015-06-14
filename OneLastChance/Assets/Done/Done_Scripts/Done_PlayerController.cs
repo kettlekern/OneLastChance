@@ -14,6 +14,7 @@ public class Done_PlayerController : MonoBehaviour
 	public float rotateSpeed;
 	public float backwardsThrustProportion;
 	public bool onlyRotation;
+	public int health;
 	
 	void Update ()
 	{
