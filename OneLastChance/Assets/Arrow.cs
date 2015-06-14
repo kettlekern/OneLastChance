@@ -11,19 +11,15 @@ public class Arrow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (cam == null) {
-			Destroy(gameObject);
-		} else {
-			//Calculate the angle from the camera to the target
-			Vector3 targetDir = sun.transform.position - cam.transform.position;
-			Vector3 forward = cam.transform.up;
-			targetDir.y = 0;
-			float angle = Vector3.Angle(targetDir, forward);
-			if (targetDir.x > 0)
-			{
-				angle = -angle;
-			}
-			transform.localRotation = Quaternion.Euler(0,0,angle);
+		//Calculate the angle from the camera to the target
+		Vector3 targetDir = sun.transform.position - cam.transform.position;
+		Vector3 forward = cam.transform.up;
+		targetDir.y = 0;
+		float angle = Vector3.Angle(targetDir, forward);
+		if (targetDir.x > 0)
+		{
+			angle = -angle;
 		}
+		transform.localRotation = Quaternion.Euler(0,0,angle);
 	}
 }

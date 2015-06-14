@@ -76,6 +76,7 @@ public class Done_PlayerController : MonoBehaviour
 			GetComponent<Detonator> ().Explode ();
 			GetComponent<MeshRenderer>().enabled = false;
 			GetComponent<MeshCollider>().enabled = false;
+			Destroy(GameObject.FindGameObjectWithTag("Arrow"));
 			hasExploded = true;
 		}
 		GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController> ().lose ();
