@@ -30,6 +30,13 @@ public class Done_GameController : MonoBehaviour
 	}
 
 	public void lose(){
+		StartCoroutine (waitCameraSwitch ());
+	}
+
+	private IEnumerator waitCameraSwitch() {
+		yield return new WaitForSeconds (4);
+		GameObject.Find("Death Camera").GetComponent<Camera>().enabled = true;
+		Camera.main.GetComponent<AudioListener>().enabled = true;
 		GameOver (enemyName + " have won...");
 		gameWin = false;
 	}
