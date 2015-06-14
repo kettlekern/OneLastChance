@@ -16,5 +16,7 @@ public class MenuButton : MonoBehaviour {
 		
 		public void ChangeToScene(){
 			Application.LoadLevel(newGameScene);
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		}
 	}
+
