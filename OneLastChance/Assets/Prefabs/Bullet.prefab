@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  deathCamera: {fileID: 2049160, guid: 31a12e314dab3044fabc4d9413c2ff1d, type: 2}
+  bulletDamage: 1
 --- !u!136 &13692426
 CapsuleCollider:
   m_ObjectHideFlags: 1

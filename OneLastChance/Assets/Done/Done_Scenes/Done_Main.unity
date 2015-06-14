@@ -2418,6 +2418,10 @@ Prefab:
       propertyPath: playerSpawnRadius
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 11441418, guid: c12ae47956258ab4ba7c19892c98f0eb, type: 2}
+      propertyPath: deathDelay
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c12ae47956258ab4ba7c19892c98f0eb, type: 2}
   m_IsPrefabParent: 0
@@ -17494,7 +17498,7 @@ MonoBehaviour:
   duration: 3
   detail: 1
   upwardsBias: 0
-  destroyTime: 2.00999999
+  destroyTime: 2.99000001
   useWorldSpace: 0
   direction: {x: 0, y: 0, z: 0}
   fireballAMaterial: {fileID: 983900913}

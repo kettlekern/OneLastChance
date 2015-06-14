@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 	public float speed;
+	public float bulletDamage;
 
 	// Update is called once per frame
 	void Update () {
@@ -11,7 +12,8 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Player"){
-			//DestroyObject(gameObject);
+			DestroyObject(gameObject);
+			other.gameObject.GetComponent<Done_PlayerController>().health -= bulletDamage;
 		}
 	}
 }

@@ -7,7 +7,8 @@ public class Done_GameController : MonoBehaviour
 	public string enemyName;
 	public string friendlyName;
 	public float playerSpawnRadius;
-	
+	public float deathDelay;
+
 	private bool gameOver;
 	private bool gameWin;
 
@@ -34,7 +35,7 @@ public class Done_GameController : MonoBehaviour
 	}
 
 	private IEnumerator waitCameraSwitch() {
-		yield return new WaitForSeconds (4);
+		yield return new WaitForSeconds (deathDelay);
 		GameObject.Find("Death Camera").GetComponent<Camera>().enabled = true;
 		Camera.main.GetComponent<AudioListener>().enabled = true;
 		GameOver (enemyName + " have won...");

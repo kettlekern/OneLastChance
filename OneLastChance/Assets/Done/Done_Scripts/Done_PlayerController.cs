@@ -14,17 +14,11 @@ public class Done_PlayerController : MonoBehaviour
 	public float rotateSpeed;
 	public float backwardsThrustProportion;
 	public bool onlyRotation;
-	public int health;
+	public float health;
 	private bool hasExploded = false;
 
-//	void OnCollisionEnter (Collision col) {
-//		if (col.collider.gameObject.tag == "Enemy" || col.collider.gameObject.tag == "Bullet") {
-//			health--;
-//		}
-//	}
-
-	void OnTriggerEnter (Collider col) {
-		if (col.gameObject.tag == "Bullet") {
+	void OnCollisionEnter (Collision col) {
+		if (col.collider.gameObject.tag == "Enemy") {
 			health--;
 		}
 	}
@@ -34,6 +28,10 @@ public class Done_PlayerController : MonoBehaviour
 //		if (!Input.anyKeyDown && animateTimer > 10) {
 //
 //		}
+
+		if (Input.GetMouseButton (0)) {
+			GetComponent<Animation> ().Play ();
+		}
 
 		if (health <= 0) {
 			ExplodeAndDie ();
@@ -76,6 +74,8 @@ public class Done_PlayerController : MonoBehaviour
 	void ExplodeAndDie() {
 		if (!hasExploded) {
 			GetComponent<Detonator> ().Explode ();
+			GetComponent<MeshRenderer>().enabled = false;
+			GetComponent<MeshCollider>().enabled = false;
 			hasExploded = true;
 		}
 		GameObject.FindGameObjectWithTag ("GameController").GetComponent<Done_GameController> ().lose ();
