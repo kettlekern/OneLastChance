@@ -25,13 +25,6 @@ public class Done_PlayerController : MonoBehaviour
 	
 	void Update ()
 	{
-//		if (!Input.anyKeyDown && animateTimer > 10) {
-//
-//		}
-
-		if (Input.GetMouseButton (0)) {
-			GetComponent<Animation> ().Play ();
-		}
 
 		if (health <= 0) {
 			ExplodeAndDie ();

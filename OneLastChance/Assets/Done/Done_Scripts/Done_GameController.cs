@@ -41,7 +41,6 @@ public class Done_GameController : MonoBehaviour
 
 		GameObject.Find("Death Camera").GetComponent<Camera>().enabled = true;
 		Camera.main.GetComponent<AudioListener>().enabled = enabled;
-		Destroy(GameObject.FindGameObjectWithTag("Arrow"));
 		GameOver (enemyName + " have won...");
 		gameWin = false;
 	}
