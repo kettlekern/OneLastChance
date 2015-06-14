@@ -13,8 +13,6 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
 		if (playerTransform != null) {
 			gameObject.transform.position = new Vector3 (playerTransform.position.x, gameObject.transform.position.y, playerTransform.position.z);
-		} else {
-			Destroy(gameObject);
 		}
 	}
 }
